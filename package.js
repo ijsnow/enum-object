@@ -1,6 +1,6 @@
 Package.describe({
   name: 'ijsnow:enum-object',
-  version: '0.0.1',
+  version: '0.0.2',
   summary: 'A simple enum object.',
   git: 'https://github.com/ijsnow/enum-object',
   documentation: 'README.md'
@@ -20,6 +20,6 @@ Package.onTest(function(api) {
   api.use('underscore');
   api.use('tinytest');
   api.use('ijsnow:enum-object');
-  
+
   api.addFiles('enum-object-tests.js');
 });

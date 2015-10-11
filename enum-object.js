@@ -68,8 +68,8 @@ EnumObject = function (name, options) {
   };
 
   // If passed values, create the enum.
-  if (! options.values)
-    throw new Error("You did");
+  if (! options || ! options.values)
+    throw new Error("You didn't pass any values in!");
 
   _init(options.values);
 

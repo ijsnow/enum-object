@@ -1,21 +1,52 @@
-/*
- * @summary: An enum object
- * @param: name
- *    @type: String
- *    @description: name of the enum object
- *    @optional: true
- * @param: options.values
- *    @type: Object (Array)
- *    @description: Array of values for enum
- *    @optional: true
+// In this file, I am making the same object, but using the object.prototype to implement
+// it as well as abstracting out my functions into higher level functions
 
- * @returns: an EnumObject
- */
-EnumObject = function (name, options) {
-  var self = this,
-      _values = [];
+var _values = [];
 
-  // Give this a property named 'name' but don't allow it to be changed
+EnumObject = function constructor (name, options) {
+  var self = this;
+
+  _init.call(self, options.values, name);
+
+  return self;
+};
+
+EnumObject.prototype.map = function (input) {
+  // If its not a number(NaN), return the key (index)
+  // Otherwise return the value
+  return isNaN(input) ?
+    _getKey(input) :
+    _getVal(input);
+};
+
+EnumObject.prototype.values = function () {
+  return values
+}
+
+// Private methods
+// @summary: Initializes the object
+var _init = function (vals, name) {
+  if (! vals.length)
+    throw new Error("You didn't pass any values in.");
+
+  _values = vals;
+
+  _defineName.call(this, name);
+};
+
+// get the key for the value passed in
+var _getKey = function (val) {
+  return _.indexOf(_values, val);
+};
+
+// get the value for the key passed in
+var _getVal = function (key) {
+  return _values[key];
+};
+
+var _defineName = function (name) {
+  var self = this;
+
   if (!name)
     throw new Error("You need to pass in a name for the EnumObject");
 
@@ -24,54 +55,4 @@ EnumObject = function (name, options) {
     configurable: false,
     writable: false
   });
-
-  // @summary: Returns the mapped value of the input
-  // @param: input
-  //    @type: String || Number
-  //    @description: Is either the key or value you want to map
-  //    @optional: false
-  // @returns: If passed a string, returns a number that represents the key,
-  //           otherwise, return the string representing the value.
-  self.map = function (input) {
-    // If its not a number(NaN), return the key (index)
-    // Otherwise return the value
-    return isNaN(input) ?
-      _getKey(input) :
-      _getVal(input);
-  };
-
-  // Get the values
-  self.values = function () {
-    return _values;
-  };
-
-  // Private methods
-  // @summary: Creates the enum by storing values in an array
-  // @param: vals
-  //    @type: Object (Array)
-  //    @optional: false
-  var _init = function (vals) {
-    if (! vals.length)
-      throw new Error("You didn't pass any values in.");
-
-    _values = vals;
-  };
-
-  // get the key for the value passed in
-  var _getKey = function (val) {
-    return _.indexOf(_values, val);
-  };
-
-  // get the value for the key passed in
-  var _getVal = function (key) {
-    return _values[key];
-  };
-
-  // If passed values, create the enum.
-  if (! options || ! options.values)
-    throw new Error("You didn't pass any values in!");
-
-  _init(options.values);
-
-  return self;
 }

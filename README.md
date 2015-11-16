@@ -2,7 +2,7 @@
 
 DISCLAIMER: I wrote this package to learn how to write packages while solving a simple problem.
 
-This object is used in [```ijsnow:enum-manager```](https://github.com/ijsnow/enum-manager).
+This package is used in [```ijsnow:enum-manager```](https://github.com/ijsnow/enum-manager).
 
 ```meteor add ijsnow:enum-object```
 

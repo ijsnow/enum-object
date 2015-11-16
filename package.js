@@ -1,6 +1,6 @@
 Package.describe({
   name: 'ijsnow:enum-object',
-  version: '0.0.2',
+  version: '0.0.3',
   summary: 'A simple enum object.',
   git: 'https://github.com/ijsnow/enum-object',
   documentation: 'README.md'

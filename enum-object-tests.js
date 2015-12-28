@@ -1,5 +1,5 @@
 // EnumObject tests
-Tinytest.add('name-is-readonly', function (test) {
+Tinytest.add('name-is-readonly', function (test) { 
   var e = new EnumObject('test', {
     values: [
       "a",
